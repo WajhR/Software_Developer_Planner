@@ -11,10 +11,21 @@ $(function () {
     var timeBlockHour = timeBlock.attr('id').split('-')[1];
     var currentHour = dayjs().hour();
     console.log(currentHour);
-      if (timeBlockHour < currentHour ) {
-        
+     
+    if (timeBlockHour < currentHour ) {
+        timeBlock.addClass('past');
 
-      }
+       } else {
+        timeBlock.removeClass('past');
+       }
+
+    if (timeBlockHour >= currentHour) {
+        timeBlock.addClass('future');
+    } else {
+      timeBlock.removeClass('future');
+    }
+
+      
   })
   // The comparison that we need to make is between timeBlockHour 
   // and the currentHour. we may have to parse the number to string. 
