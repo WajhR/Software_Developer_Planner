@@ -58,10 +58,8 @@ $( ".saveBtn" ).click(function() {
   var value= $(this).siblings("textarea").val();
   localStorage.setItem(id, value);
   console.log(window.localStorage.getItem(id));
-  
-
-  });
-
+  localStorage.getItem(id, value);
+    
+ 
 });
-
-// Add click event listener
+});
