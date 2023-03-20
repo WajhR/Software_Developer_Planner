@@ -12,19 +12,17 @@ $(function () {
     var currentHour = dayjs().hour();
     console.log(currentHour);
      
-    if (timeBlockHour < currentHour ) {
+    if (timeBlockHour <= currentHour ) {
         timeBlock.addClass('past');
 
+       } else if (timeBlockHour === currentHour) {
+        timeBlock.removeClass('past');
+        timeBlock.addClass('present');
        } else {
         timeBlock.removeClass('past');
-       }
-
-    if (timeBlockHour >= currentHour) {
+        timeBlock.removeClass('present')
         timeBlock.addClass('future');
-    } else {
-      timeBlock.removeClass('future');
-    }
-
+       }
       
   })
   // The comparison that we need to make is between timeBlockHour 
@@ -50,43 +48,20 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 
 
- var dayJsObject = dayjs();
-console.log(dayJsObject.format("dddd MMMM DD,YYYY h:mm A"));
+var dayJsObject = dayjs();
+console.log(dayJsObject.format("dddd MMMM DD, YYYY h:mm A"));
 
-$("#currentDay").text(dayJsObject.format("dddd MMMM DD,YYYY h:mm A"))
+$("#currentDay").text(dayJsObject.format("dddd MMMM DD, YYYY h:mm A"))
 
 $( ".saveBtn" ).click(function() {
   var id=$(this).parent().attr("id");
   var value= $(this).siblings("textarea").val();
   localStorage.setItem(id, value);
+  console.log(window.localStorage.getItem(id));
+  
+
+  });
 
 });
-});
-// const rows = document.getElementsByClassName("row");
-// let currentHour = parseInt(moment().format('H'));
-
-// Array.from(rows).forEach(row => {
-//   let
-//     rowIdString = row.id,
-//     rowHour;
-//   if (rowIdString) {
-//     rowHour = parseInt(rowIdString);
-//   }
-//   if (rowHour) {
-//     // Compares row id to current hour and sets color accordingly
-//     if (currentHour === rowHour) {
-//       setColor(row, "red");
-//     } else if ((currentHour < rowHour) && (currentHour > rowHour - 6)) {
-//       setColor(row, "green");
-//     } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
-//       setColor(row, "lightgrey");
-//     } else {
-//       setColor(row, "white");
-//     }
-//   }
-// });
-
-// function setColor(element, color) {
-//   element.style.backgroundColor = color;
 
 // Add click event listener
