@@ -57,9 +57,15 @@ $( ".saveBtn" ).click(function() {
   var id=$(this).parent().attr("id");
   var value= $(this).siblings("textarea").val();
   localStorage.setItem(id, value);
-  console.log(window.localStorage.getItem(id));
-  localStorage.getItem(id, value);
-    
- 
+  
+  console.log(window.localStorage.getItem(id));  
+  
 });
 });
+
+
+for(let i=9;i<18;i++){
+  var id = "hour-"+i
+  var userEvent = localStorage.getItem(id);
+  $("#"+id).children("textarea").val(userEvent)
+}
